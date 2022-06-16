@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "386991952309",
+    "firebase_url": "https://biol-a3996.firebaseio.com",
+    "project_id": "biol-a3996",
+    "storage_bucket": "biol-a3996.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386991952309:android:cf7cbf10f5957bf137c9fc",
+        "android_client_info": {
+          "package_name": "com.example.login_screen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "386991952309-38jltsqb33j59mejdqsj31oa4gg1hl4m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfqrSvAQJGHfh_PaNIWUhbjVleUcJOUQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "386991952309-38jltsqb33j59mejdqsj31oa4gg1hl4m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
