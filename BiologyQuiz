@@ -1,0 +1,295 @@
+import 'package:flutter/material.dart';
+
+class BioQuiz {
+  var images = [
+    "BIOL_LOGO", "BIOL_LOGO", "BIOL_LOGO", "BIOL_LOGO"
+  ];
+
+  var questions = [
+    "The nucleus synthesizes all of the following except_______.",
+    "What structure is located inside the nucleus and contains DNA for coding ribosomal RNA?",
+    "Genomic DNA is contained in which of the following structures?",
+    "A cell is arrested during mitosis. At this stage, distinct chromatids are visible at opposite poles of the cell. Which stage of mitosis does this describe?",
+    "The stage of mitosis during which sister chromatids line up in the middle of the cell is_______.",
+    "What is the correct order of the stages of mitosis?",
+    "Which of the following events does not take place in prophase?",
+    "Which of the following is a product of photosynthesis?",
+    "In a certain food web, rabbits and turtles both feed off of grass. To what trophic level do the rabbits belong?",
+    "Which of the following is an example of a decomposer?",
+    "Which of the following is an example of a producer?",
+    "What type(s) of food does an omnivore consumer?",
+    "A certain insect eats plants. If the plants are producers, what is the insect classified as?",
+    "The theory that the most well-adapted individuals in one generation tend to be the ones that leave the most offspring is called______.",
+    "Which brain structure is responsible for the body's balance and coordination?",
+    "Which of the following structures is NOT part of the central nervous system?",
+    "Which of the following is the most basic functional unit found in the nervous system?"
+  ];
+
+  var choices = [
+    ["tRNA", "proteins", "rRNA", "mRNA"],
+    ["Nucleolus", "Ribosomes", "Chromatin", "Proteins"],
+    ["Mitochondria", "Nucleus", "Golgi Apparatus", "Nucleolus"],
+    ["Prophase", "Telophase", "Metaphase", "Anaphase"],
+    ["Anaphase", "Interphase", "Prophase", "Metaphase"],
+    ["anaphase, metaphase, telophase, prophase", "metaphase, telophase, anaphase, prophase", "prophase, anaphase, telophase, metaphase", "prophase, metaphase, anaphase, telophase"],
+    ["The nucleolus disappears", "Centrioles move to the opposite ends of the cell", "Sister chromatids are separated", "Chromosomes become visible in the cell"],
+    ["Hydrogen", "Water", "Nitrogen", "Oxygen"],
+    ["Secondary consumer", "Prey", "Mid-level consumer", "Primary consumer"],
+    ["Caterpillar", "Mushroom", "Lion", "Flower"],
+    ["Frog", "Fungus", "Bear", "Green algae"],
+    ["Decaying matter", "Plants and animals", "Animals only", "Plants only"],
+    ["Primary consumer", "Secondary consumer", "Tertiary consumer", "Predator"],
+    ["adaptation", "genetic drift", "natural selection", "evolution"],
+    ["Cerebrum", "Thalamus", "Cerebellum", "Medulla oblongata"],
+    ["The spinal cord", "The brain stem", "Spinal nerves", "The cerebral cortex"],
+    ["Glial cells", "Neurons", "The cerebellum", "Mitochondria"]
+    ;
+
+  var correctAnswers = [
+    "proteins", "Nucleolus", "Nucelus", "Anaphase", "Metaphase", "prophase, metaphase, anaphase, telophase", "Sister chromatids are separated", "Oxygen", "Primary consumer", "Mushroom", "Green algae", "Plants and animals", "Primary consumer", "natural selection", "Cerebellum", "Spinal nerves", "Neurons"
+  ];
+}
+
+var finalScore = 0;
+var questionNumber = 0;
+var quiz = new BioQuiz();
+
+class Quiz1 extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    return new Quiz1State();
+  }
+}
+
+class Quiz1State extends State<Quiz1> {
+  @override
+  Widget build(BuildContext context) {
+    return new WillPopScope(
+      onWillPop: ()async => false,
+      child: Scaffold(
+
+        body: new Container(
+          margin: const EdgeInsets.all(10.0),
+          alignment: Alignment.topCenter,
+          child: new Column(
+            children: <Widget>[
+
+              new Padding(padding: EdgeInsets.all(20.0)),
+
+              new Container(
+                alignment: Alignment.centerRight,
+                child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    new Text("Question ${questionNumber + 1} of ${quiz.questions.length}",
+                    style: new TextStyle(
+                      fontSize: 22.0
+                    ),),
+
+                    /*
+                    new Text("Score: ${(score * 100/questionNumber)}finalScore",
+                    style: new TextStyle(
+                      fontSize: 22.0
+                    ),)
+                    */
+                  ],
+                ),
+              ),
+              
+              new Padding(padding: EdgeInsets.all(10.0)), 
+              
+              new Image.asset(
+                "images/${quiz.images[questionNumber]}.png"
+              ),
+
+              new Padding(padding: EdgeInsets.all(10.0)),
+
+              new Text(quiz.questions[questionNumber],
+              style: new TextStyle(
+                fontSize: 20,
+              ),),
+
+              new Padding(padding: EdgeInsets.all(10.0)),
+
+              new Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+
+                  //button 1
+                  new MaterialButton(
+                      minWidth: 120,
+                      color: Colors.green,
+                      onPressed: () {
+                        if(quiz.choices[questionNumber][0] == quiz.correctAnswers[questionNumber]) {
+                          debugPrint("Correct");
+                          finalScore++;
+                        } else {
+                          debugPrint("Wrong");
+                        }
+                        updateQuestion();
+                      },
+                    child: new Text(quiz.choices[questionNumber][0],
+                    style: new TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white
+                    ),),
+                  ),
+
+                  //button 2
+                  new MaterialButton(
+                    minWidth: 120,
+                    color: Colors.green,
+                    onPressed: () {
+                      if(quiz.choices[questionNumber][1] == quiz.correctAnswers[questionNumber]) {
+                        debugPrint("Correct");
+                        finalScore++;
+                      } else {
+                        debugPrint("Wrong");
+                      }
+                      updateQuestion();
+                    },
+                    child: new Text(quiz.choices[questionNumber][1],
+                      style: new TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white
+                      ),),
+                  ),
+
+                ],
+              ),
+
+              new Padding(padding: EdgeInsets.all(10.0)),
+
+              new Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+
+                  //button 3
+                  new MaterialButton(
+                    minWidth: 120,
+                    color: Colors.green,
+                    onPressed: () {
+                      if(quiz.choices[questionNumber][2] == quiz.correctAnswers[questionNumber]) {
+                        debugPrint("Correct");
+                        finalScore++;
+                      } else {
+                        debugPrint("Wrong");
+                      }
+                      updateQuestion();
+                    },
+                    child: new Text(quiz.choices[questionNumber][2],
+                      style: new TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white
+                      ),),
+                  ),
+
+                  //button 4
+                  new MaterialButton(
+                    minWidth: 120,
+                    color: Colors.green,
+                    onPressed: () {
+                      if(quiz.choices[questionNumber][3] == quiz.correctAnswers[questionNumber]) {
+                        debugPrint("Correct");
+                        finalScore++;
+                      } else {
+                        debugPrint("Wrong");
+                      }
+                      updateQuestion();
+                    },
+                    child: new Text(quiz.choices[questionNumber][3],
+                      style: new TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white
+                      ),),
+                  ),
+                ],
+              ),
+
+              new Padding(padding: EdgeInsets.all(10.0)),
+
+              new Container(
+                alignment: Alignment.bottomCenter,
+                child: new MaterialButton(
+                  color: Colors.blue,
+                  minWidth: 240.0,
+                  height: 30.0,
+                  onPressed: resetQuiz,
+                  child: new Text("Quit",
+                    style: new TextStyle(
+                      fontSize:  18.0,
+                      color: Colors.white
+                    ),
+                  ),
+                ),
+              ),
+
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void resetQuiz() {
+    setState(() {
+      Navigator.pop(context);
+      finalScore = 0;
+      questionNumber = 0;
+    });
+  }
+
+  void updateQuestion() {
+    setState(() {
+      if (questionNumber == quiz.questions.length - 1) {
+        Navigator.push(context, new MaterialPageRoute(builder: (context) => new Summary(score: finalScore)));
+      } else {
+        questionNumber++;
+      }
+    });
+  }
+}
+
+class Summary extends StatelessWidget{
+  final int score;
+  Summary({Key key, @required this.score}) : super(key : key);
+
+  @override
+  Widget build(BuildContext context) {
+    return new WillPopScope(
+      onWillPop: ()async => false,
+      child: Scaffold(
+        body: new Container(
+          child: Align(
+            alignment: Alignment.center,
+          child: new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Text("Final Score: ${(score * 100 / (questionNumber + 1)).round()}%",
+              style: new TextStyle(
+                fontSize: 25.0
+              ),),
+
+              new Padding(padding: EdgeInsets.all(10.0)), 
+              
+              new MaterialButton(
+                color: Colors.blue,
+                onPressed: (){
+                  questionNumber = 0;
+                  finalScore = 0;
+                  Navigator.pop(context);
+                },
+                child: new Text("Reset Quiz",
+                  style: new TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.white
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),),
+      ),
+    );
+  }
+}
